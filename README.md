@@ -30,3 +30,8 @@ Includes various commands to assist rebuilding protobufs, build and running the 
 - With more time I'd probably refactor most of the project and follow something like hexagonal architecture
 - There's no authentication service
 - Getting a user returns users they follow and users who follow them. I probably should have added RPCs to get this data
+
+# Usage
+I used postman's gRPC request feature to access the features of the service. It's available under `my work space > new > gRPC Request`  
+Use ip localhost and port 50050  
+Server reflection is enabled to load RPC methods
