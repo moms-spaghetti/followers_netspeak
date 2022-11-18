@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+option go_package = "github.com/moms-spaghetti/followers";
+
+package followers_proto;
+
+service UserService {
+  rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
+  rpc GetAllUsers (GetAllUsersRequest) returns (GetAllUsersResponse) {}
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse) {}
+  rpc FollowUser (FollowUserRequest) returns (FollowUserResponse) {}
+  rpc UnfollowUser (UnfollowUserRequest) returns (FollowUserResponse) {}
+}
+
+message User {
+  string id = 1;
+  string name = 2;
+  repeated string follower_ids = 3;
+  repeated string following_ids = 4;
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
+message GetAllUsersRequest {}
+
+message GetAllUsersResponse {
+  repeated User users = 1;
+}
+
+message CreateUserRequest {
+  string name = 1;
+}
+
+message CreateUserResponse {
+  User user = 1;
+}
+
+message FollowUserRequest {
+  string following_id = 1;
+  string followed_by_id = 2;
+}
+
+message FollowUserResponse {
+  repeated string following_ids = 1;
+  repeated string followed_by_ids = 2;
+}
+
+message UnfollowUserRequest {
+  string unfollow_id = 1;
+  string unfollow_by_id = 2;
+}
